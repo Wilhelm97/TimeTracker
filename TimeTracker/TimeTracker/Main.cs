@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,23 +43,29 @@ namespace TimeTracker
             String endTime = DateTime.Now.ToString("h:mm tt");
             textBox2.Clear();
             textBox2.Text += endTime;
-
             TimeSpan duration = DateTime.Parse(textBox1.Text).Subtract(DateTime.Parse(textBox2.Text));
-
             textBox4.Text += duration;
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter("C:\\Users\\Owner\\Documents\\TimeTracker.txt");
-            sw.Write(textBox1.Text);
-            sw.Write("\n");
-            sw.Write(textBox2.Text);
-            sw.Write("\n ");
-            sw.Write(monthCalendar1);
-            sw.Close();
-
+            try
+            {
+                StreamWriter sw = new StreamWriter("C:\\Users\\Owner\\Documents\\TimeTrack.txt");
+                sw.WriteLine(textBox1.Text);
+                sw.WriteLine(textBox2.Text);
+                sw.WriteLine(textBox3.Text);
+                sw.WriteLine(textBox4.Text);
+                sw.Close();
+            }
+            catch (Exception t)
+            {
+                Console.WriteLine("Exception: " + t.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
