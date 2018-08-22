@@ -52,6 +52,7 @@ namespace TimeTracker
             try
             {
                 StreamWriter sw = new StreamWriter("C:\\Users\\Owner\\Documents\\TimeTrack.txt");
+
                 sw.WriteLine(textBox1.Text);
                 sw.WriteLine(textBox2.Text);
                 sw.WriteLine(textBox3.Text);
@@ -70,7 +71,8 @@ namespace TimeTracker
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-
+            this.monthCalendar1.ScrollChange = 1;
+          
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -79,6 +81,16 @@ namespace TimeTracker
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
         {
 
         }
