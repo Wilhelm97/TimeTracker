@@ -74,24 +74,36 @@ namespace TimeTracker
                 Directory.CreateDirectory(root);
 
             }
-            try
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                StreamWriter sw = new StreamWriter("C:\\Users\\Owner\\Documents\\TimeTracker\\TimeTrack.txt");
-                sw.WriteLine("Date: " + textBox3.Text);
-                sw.WriteLine("Time Started: " +textBox1.Text);
-                sw.WriteLine("Time Ended: " +textBox2.Text);
-                sw.WriteLine("Time Worked: "+textBox4.Text);
-                sw.WriteLine("Amount Charged: " +textBox5.Text);
-                sw.WriteLine("Comments: " +textBox6.Text);
-                sw.Close();
-            }
-            catch (Exception t)
-            {
-                Console.WriteLine("Exception: " + t.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Executing finally block.");
+
+                try
+                {
+                    System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFileDialog1.FileName.ToString());
+                    sw.WriteLine("Date: " + textBox3.Text);
+                    sw.WriteLine("Time Started: " + textBox1.Text);
+                    sw.WriteLine("Time Ended: " + textBox2.Text);
+                    sw.WriteLine("Time Worked: " + textBox4.Text);
+                    sw.WriteLine("Amount Charged: " + textBox5.Text);
+                    sw.WriteLine("Comments: " + textBox6.Text);
+                    sw.Close();
+                }
+                catch (Exception t)
+                {
+                    Console.WriteLine("Exception: " + t.Message);
+                }
+                finally
+                {
+                    Console.WriteLine("Executing finally block.");
+                }
+
             }
         }
 

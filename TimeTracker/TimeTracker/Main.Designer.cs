@@ -108,7 +108,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(81, 27);
             this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Save As";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -134,7 +134,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(566, 148);
+            this.monthCalendar1.Location = new System.Drawing.Point(565, 147);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 8;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
@@ -236,10 +236,36 @@
             this.CbCharge.FormattingEnabled = true;
             this.CbCharge.Items.AddRange(new object[] {
             "15",
+            "16",
+            "17",
+            "18",
+            "19",
             "20",
+            "21",
+            "22",
+            "23",
+            "24",
             "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
             "35",
-            "40"});
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45"});
             this.CbCharge.Location = new System.Drawing.Point(152, 288);
             this.CbCharge.Name = "CbCharge";
             this.CbCharge.Size = new System.Drawing.Size(199, 28);
@@ -250,6 +276,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 784);
             this.Controls.Add(this.CbCharge);
             this.Controls.Add(this.lblAmount);
