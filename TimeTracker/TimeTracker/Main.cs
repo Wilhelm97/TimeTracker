@@ -14,6 +14,8 @@ namespace TimeTracker
 {
     public partial class Main : Form
     {
+        public TimeSpan D { get; private set; }
+
         public Main()
         {
             InitializeComponent();
@@ -45,6 +47,15 @@ namespace TimeTracker
             textBox2.Text += endTime;
             TimeSpan duration = DateTime.Parse(textBox1.Text).Subtract(DateTime.Parse(textBox2.Text));
             textBox4.Text += duration;
+            D = duration;
+            int Hours = (int)D.TotalHours;
+            int Min = (int)D.TotalMinutes;
+
+            if (CbCharge.SelectedItem != null)
+            {
+                int x = int.Parse(CbCharge.SelectedItem.ToString());
+                textBox5.Text += (Hours + 1) * x;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -52,11 +63,12 @@ namespace TimeTracker
             try
             {
                 StreamWriter sw = new StreamWriter("C:\\Users\\Owner\\Documents\\TimeTrack.txt");
-
-                sw.WriteLine(textBox1.Text);
-                sw.WriteLine(textBox2.Text);
-                sw.WriteLine(textBox3.Text);
-                sw.WriteLine(textBox4.Text);
+                sw.WriteLine("Date: " + textBox1.Text);
+                sw.WriteLine("Time Started: " +textBox2.Text);
+                sw.WriteLine("Time Ended: " +textBox3.Text);
+                sw.WriteLine("Time Worked: "+textBox4.Text);
+                sw.WriteLine("Amount Charged: " +textBox5.Text);
+                sw.WriteLine("Comments: " +textBox6.Text);
                 sw.Close();
             }
             catch (Exception t)
@@ -71,8 +83,7 @@ namespace TimeTracker
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            this.monthCalendar1.ScrollChange = 1;
-          
+
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -85,12 +96,17 @@ namespace TimeTracker
 
         }
 
-        private void Main_Load(object sender, EventArgs e)
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void lblDate_Click(object sender, EventArgs e)
+        private void CbCharge_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
