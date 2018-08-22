@@ -46,6 +46,7 @@ namespace TimeTracker
             textBox2.Clear();
             textBox2.Text += endTime;
             TimeSpan duration = DateTime.Parse(textBox1.Text).Subtract(DateTime.Parse(textBox2.Text));
+            textBox4.Clear();
             textBox4.Text += duration;
             D = duration;
             int Hours = (int)D.TotalHours;
@@ -60,12 +61,25 @@ namespace TimeTracker
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
+            string root = "C:\\Users\\Owner\\Documents\\TimeTracker";
+
+            string subdir = "C:\\Users\\Owner\\Documents\\TimeTracker\\Testing";
+
+            // If directory does not exist, create it.
+
+            if (!Directory.Exists(root))
+            {
+
+                Directory.CreateDirectory(root);
+
+            }
             try
             {
-                StreamWriter sw = new StreamWriter("C:\\Users\\Owner\\Documents\\TimeTrack.txt");
-                sw.WriteLine("Date: " + textBox1.Text);
-                sw.WriteLine("Time Started: " +textBox2.Text);
-                sw.WriteLine("Time Ended: " +textBox3.Text);
+                StreamWriter sw = new StreamWriter("C:\\Users\\Owner\\Documents\\TimeTracker\\TimeTrack.txt");
+                sw.WriteLine("Date: " + textBox3.Text);
+                sw.WriteLine("Time Started: " +textBox1.Text);
+                sw.WriteLine("Time Ended: " +textBox2.Text);
                 sw.WriteLine("Time Worked: "+textBox4.Text);
                 sw.WriteLine("Amount Charged: " +textBox5.Text);
                 sw.WriteLine("Comments: " +textBox6.Text);
