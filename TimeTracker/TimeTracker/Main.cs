@@ -23,6 +23,9 @@ namespace TimeTracker
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            //When the start button
+            //add date to tb1
+            //have to use clear to make sure no over lapping
             String startTime = DateTime.Now.ToString("h:mm tt");
             textBox1.Clear();
             textBox1.Text += startTime;
@@ -42,16 +45,19 @@ namespace TimeTracker
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            //stop the time
             String endTime = DateTime.Now.ToString("h:mm tt");
             textBox2.Clear();
             textBox2.Text += endTime;
             TimeSpan duration = DateTime.Parse(textBox1.Text).Subtract(DateTime.Parse(textBox2.Text));
             textBox4.Clear();
             textBox4.Text += duration;
+            //using D so that we dont change the duration's property
             D = duration;
             int Hours = (int)D.TotalHours;
             int Min = (int)D.TotalMinutes;
-
+            //calculating the amount made in hours
+            //checking to see if there is a selected item
             if (CbCharge.SelectedItem != null)
             {
                 int x = int.Parse(CbCharge.SelectedItem.ToString());
@@ -67,25 +73,24 @@ namespace TimeTracker
             string subdir = "C:\\Users\\Owner\\Documents\\TimeTracker\\Testing";
 
             // If directory does not exist, create it.
-
             if (!Directory.Exists(root))
             {
 
                 Directory.CreateDirectory(root);
 
             }
-
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
-
+            //saivng the file
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
                 try
                 {
+                    //printing the textbox outcome
                     System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFileDialog1.FileName.ToString());
                     sw.WriteLine("Date: " + textBox3.Text);
                     sw.WriteLine("Time Started: " + textBox1.Text);
